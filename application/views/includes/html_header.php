@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dashboard Template for Bootstrap</title>
+    <title>Projeto CodeIgniter</title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?= base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
