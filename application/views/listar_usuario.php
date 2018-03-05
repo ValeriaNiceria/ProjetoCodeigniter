@@ -26,6 +26,7 @@
 			<table class="table">
 				<thead class="thead-dark">
 					<tr>
+						<th>ID</th>
 						<th>Nome</th>
 						<th>Email</th>
 						<th>Nível</th>
@@ -36,13 +37,14 @@
 				<?php foreach ($usuarios as $usuario) : ?>
 				<tbody>
 					<tr>
+						<td><?= $usuario['id'] ?></td>
 						<td><?= $usuario['nome'] ?></td>
 						<td><?= $usuario['email'] ?></td>
 						<td><?= ($usuario['nivel']) ? "Administrador" : "Usuário"; ?></td>
 						<td><?= ($usuario['status']) ? "Ativo" : "Inativo"; ?></td>
 						<td>
-							<a href="<?= base_url('usuario/atualizar/' . $usuario['id']) ?>" class="btn btn-primary">Editar</a>
-							<a href="<?= base_url('usuario/excluir/' . $usuario['id']) ?>" class="btn btn-danger">Excluir</a>
+							<a href="<?= base_url('usuario/atualizar/' . $usuario['id']) ?>" class="btn btn-primary btn-group">Atualizar</a>
+							<a href="<?= base_url('usuario/excluir/' . $usuario['id']) ?>" onclick="return confirm('Você tem certeza?');"  class="btn btn-danger btn-group">Remover</a>
 						</td>
 					</tr>
 				</tbody>

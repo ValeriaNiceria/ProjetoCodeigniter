@@ -55,4 +55,21 @@ class Usuario extends CI_Controller {
 		}
 	}
 
+
+	public function excluir()
+	{
+		$id = $this->uri->segment(3);
+		$tabela = "usuarios";
+
+		if ($this->Usuario_model->excluir($id, $tabela))
+		{
+			$this->session->set_flashdata('success', 'Usuário foi excluído com sucesso.');
+			redirect('usuario');
+		} else
+		{
+			$this->session->set_flashdata('error', 'Não foi possível excluir o usuário.');
+			redirect('usuario');
+		}
+	}
+
 }
