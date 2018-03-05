@@ -8,6 +8,14 @@
     	</div>
 	</div>
 
+	<!--Notificacação-->
+	<?php
+		$success = $this->session->flashdata('success');
+		$error = $this->session->flashdata('error');
+		echo isset($success) ? "<div class='alert alert-success'>" . $success . "</div>" : "";
+		echo isset($error) ? "<div class='alert alert-danger'" . $error . "</div>" : "";
+	?>
+
 
 </main>
 </div>

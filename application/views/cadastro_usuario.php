@@ -5,23 +5,29 @@
     	</div>
 	</div>
 
+    <!--Notificacação-->
+    <?php
+        $error = $this->session->flashdata('error');
+        echo isset($error) ? "<div class='alert alert-danger'" . $error . "</div>" : "";
+    ?>
+
    <div class="col-md-12">
-    	<form action="" method="post">
+    	<form action="<?= base_url('usuario/cadastrar')?>" method="post">
     		<label for="nome">Nome:</label>
-    		<input type="text" name="nome" id="nome" placeholder="Informe o nome" class="form-control"/>
+    		<input type="text" name="nome" id="nome" placeholder="Informe o nome" class="form-control" required/>
 
 			<div class="row">
 				<div class="col-md-3">
 					<label for="cpf">CPF:</label>
-    				<input type="text" name="cpf" id="cpf" placeholder="Informe o cpf" class="form-control"/>
+    				<input type="text" name="cpf" id="cpf" placeholder="Informe o cpf" class="form-control" required/>
 				</div>
 				<div class="col-md-7">
 					<label for="endereco">Endereço:</label>
-    				<input type="text" name="endereco" id="endereco" placeholder="Informe o endereço" class="form-control"/>
+    				<input type="text" name="endereco" id="endereco" placeholder="Informe o endereço" class="form-control" required/>
 				</div>
 				<div class="col-md-2">
     				<label for="nivel">Nível:</label>
-    				<select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+    				<select class="custom-select mr-sm-2" id="nivel" name="nivel">
 				    	<option selected>Escolher...</option>
 				    	<option value="1">Administrador</option>
 				    	<option value="0">Usuário</option>
@@ -32,15 +38,15 @@
     		<div class="row">
     			<div class="col-md-6">
     				<label for="email">Email:</label>
-    				<input type="text" name="email" id="email" placeholder="Informe o email" class="form-control"/>
+    				<input type="text" name="email" id="email" placeholder="Informe o email" class="form-control" required/>
     			</div>
     			<div class="col-md-4">
     				<label for="senha">Senha:</label>
-    				<input type="text" name="senha" id="senha" placeholder="Informe a senha" class="form-control"/>
+    				<input type="password" name="senha" id="senha" placeholder="Informe a senha" class="form-control" required/>
     			</div>
     			<div class="col-md-2">
     				<label for="status">Status:</label>
-    				<select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+    				<select class="custom-select mr-sm-2" id="status" name="status">
 				    	<option selected>Escolher...</option>
 				    	<option value="1">Ativo</option>
 				    	<option value="0">Inativo</option>
@@ -50,7 +56,7 @@
 
 		    <div class="mt-3 float-right">
 		    	<button type="submit" class="btn btn-success">Enviar</button>
-		    	<button type="reset" class="btn btn-primary">Cancelar</button>
+		    	<button type="reset" class="btn btn-default">Cancelar</button>
 		    </div>
 
     	</form>

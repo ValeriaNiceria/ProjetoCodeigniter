@@ -3,6 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Usuario extends CI_Controller {
 
+	function __construct()
+	{
+		parent::__construct();
+		$this->load->model('Usuario_model');
+	}
+
 	public function index()
 	{
 		$this->load->view('includes/html_header');
@@ -18,5 +24,30 @@ class Usuario extends CI_Controller {
 		$this->load->view('includes/menu');
 		$this->load->view('cadastro_usuario');
 		$this->load->view('/includes/html_footer');	
+	}
+
+
+	public function cadastrar()
+	{
+		$dados = array(
+			'nome' => $this->input->post('nome'),
+			'cpf' => $this->input->post('cpf'),
+			'endereco' => $this->input->post('endereco'),
+			'email' => $this->input->post('email'),
+			'senha' => md5($this->input->post('senha')),
+			'nivel' => $this->input->post('nivel'),
+			'status' => $this->input->post('status')
+		);
+
+		$tabela = "usuarios";
+
+		if ($this->Usuario_model->cadastrar($tabela, $dados))
+		{
+			$this->session->set_flashdata('success', 'Usuário cadastrado com sucesso.');
+			redirect('usuario');
+		} else 
+		{
+			$this->session->set_flashdata('error', 'Não foi possível realizar o cadastro.');
+		}
 	}
 }
