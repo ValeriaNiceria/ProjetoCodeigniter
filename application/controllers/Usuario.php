@@ -11,9 +11,13 @@ class Usuario extends CI_Controller {
 
 	public function index()
 	{
+		$tabela = "usuarios";
+
+		$dados['usuarios'] = $this->Usuario_model->getAll($tabela);
+
 		$this->load->view('includes/html_header');
 		$this->load->view('includes/menu');
-		$this->load->view('listar_usuario');
+		$this->load->view('listar_usuario', $dados);
 		$this->load->view('/includes/html_footer');
 	}
 
@@ -50,4 +54,5 @@ class Usuario extends CI_Controller {
 			$this->session->set_flashdata('error', 'Não foi possível realizar o cadastro.');
 		}
 	}
+
 }

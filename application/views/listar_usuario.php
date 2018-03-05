@@ -16,6 +16,42 @@
 		echo isset($error) ? "<div class='alert alert-danger'" . $error . "</div>" : "";
 	?>
 
+	<!-- Listagem dos dados MySQL -->
+	<?php if (empty($usuarios)) : ?>
+		<div class="alert alert-info">
+			Nenhum registro foi encontrado.
+		</div>
+	<?php else: ?>
+		<div class="col-md-12">
+			<table class="table">
+				<thead class="thead-dark">
+					<tr>
+						<th>Nome</th>
+						<th>Email</th>
+						<th>Nível</th>
+						<th>Status</th>
+						<th></th>
+					</tr>
+				</thead>
+				<?php foreach ($usuarios as $usuario) : ?>
+				<tbody>
+					<tr>
+						<td><?= $usuario['nome'] ?></td>
+						<td><?= $usuario['email'] ?></td>
+						<td><?= ($usuario['nivel']) ? "Administrador" : "Usuário"; ?></td>
+						<td><?= ($usuario['status']) ? "Ativo" : "Inativo"; ?></td>
+						<td>
+							<a href="<?= base_url('usuario/atualizar/' . $usuario['id']) ?>" class="btn btn-primary">Editar</a>
+							<a href="<?= base_url('usuario/excluir/' . $usuario['id']) ?>" class="btn btn-danger">Excluir</a>
+						</td>
+					</tr>
+				</tbody>
+				<?php endforeach; ?>
+
+			</table>
+		</div>
+	<?php endif; ?>
+
 
 </main>
 </div>
