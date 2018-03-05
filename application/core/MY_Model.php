@@ -41,4 +41,32 @@ class MY_Model extends CI_Model {
 		}
 		return FALSE;
 	}
+
+
+	public function getById($id, $tabela)
+	{
+		if (!is_null($id) && isset($tabela))
+		{
+			$this->db->where('id', $id);
+			$query = $this->db->get($tabela);
+			if ($query->num_rows() > 0) 
+			{
+				return $query->row_array();
+			} else
+			{
+				return NULL;
+			}
+		}
+	}
+
+
+	public function atualizar($id, $tabela, $dados)
+	{
+		if (is_array($dados) && !is_null($id) && isset($tabela))
+		{
+			$this->db->where('id', $id);
+			return $this->db->update($tabela, $dados);
+		}
+		return FALSE;
+	}
 }

@@ -18,7 +18,7 @@ class Usuario extends CI_Controller {
 		$this->load->view('includes/html_header');
 		$this->load->view('includes/menu');
 		$this->load->view('listar_usuario', $dados);
-		$this->load->view('/includes/html_footer');
+		$this->load->view('includes/html_footer');
 	}
 
 
@@ -27,7 +27,7 @@ class Usuario extends CI_Controller {
 		$this->load->view('includes/html_header');
 		$this->load->view('includes/menu');
 		$this->load->view('cadastro_usuario');
-		$this->load->view('/includes/html_footer');	
+		$this->load->view('includes/html_footer');	
 	}
 
 
@@ -69,6 +69,45 @@ class Usuario extends CI_Controller {
 		{
 			$this->session->set_flashdata('error', 'Não foi possível excluir o usuário.');
 			redirect('usuario');
+		}
+	}
+
+
+	public function atualizar()
+	{
+		$id = $this->uri->segment(3);
+		$tabela = "usuarios";
+
+		$dados['usuario'] = $this->Usuario_model->getById($id, $tabela);
+
+		$this->load->view('includes/html_header');
+		$this->load->view('includes/menu');
+		$this->load->view('editar_usuario', $dados);
+		$this->load->view('includes/html_footer');	
+
+		if ($_POST)
+		{
+			$tabela = "usuarios";
+			$id = $this->input->post('id');
+
+			$dados = array(
+				'nome' => $this->input->post('nome'),
+				'cpf' => $this->input->post('cpf'),
+				'endereco' => $this->input->post('endereco'),
+				'email' => $this->input->post('email'),
+				'nivel' => $this->input->post('nivel'),
+				'status' => $this->input->post('status')
+			);
+
+			if ($this->Usuario_model->atualizar($id, $tabela, $dados))
+			{
+				$this->session->set_flashdata('success', 'Usuário atualizado com sucesso.');
+				redirect('usuario');
+			} else
+			{
+				$this->session->set_flashdata('error', 'Não foi possível atualizar o usuário.');
+				redirect('usuario');
+			}
 		}
 	}
 
