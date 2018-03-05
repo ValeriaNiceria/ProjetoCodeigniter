@@ -111,4 +111,37 @@ class Usuario extends CI_Controller {
 		}
 	}
 
+
+
+	public function salvar_senha()
+	{
+		$id = $this->input->post('id');
+		$tabela = "usuarios";
+
+		$senha_antiga = md5($this->input->post('senha_antiga'));
+		
+		//pega a senha do banco
+		$usuario = $this->Usuario_model->getById($id, $tabela);
+
+		if ($senha_antiga === $usuario['senha'])
+		{
+			$dados = array(
+				'senha' => md5($this->input->post('senha_nova'))
+			);
+			if ($this->Usuario_model->atualizar($id, $tabela, $dados))
+			{
+				$this->session->set_flashdata('success', 'Senha foi atualizada com sucesso.');
+				redirect("usuario/atualizar/".$id);
+			} else 
+			{
+				$this->session->set_flashdata('error', 'Não foi possível atualizar a senha.');
+				redirect("usuario/atualizar/".$id);
+			}
+		} else
+		{
+			$this->session->set_flashdata('error', 'Senha antiga não é a mesma que está cadastrada no banco.');
+			redirect("usuario/atualizar/".$id);
+		}
+	}
+
 }

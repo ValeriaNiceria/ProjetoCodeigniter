@@ -5,6 +5,14 @@
     	</div>
 	</div>
 
+    <!--Notificacação-->
+    <?php
+        $success = $this->session->flashdata('success');
+        $error = $this->session->flashdata('error');
+        echo isset($success) ? "<div class='alert alert-success'>" . $success . "</div>" : "";
+        echo isset($error) ? "<div class='alert alert-danger'>" . $error . "</div>" : "";
+    ?>
+
    <div class="col-md-12">
     	<form action="<?= base_url('usuario/atualizar')?>" method="post">
     		<label for="nome">Nome:</label>
@@ -36,7 +44,8 @@
     			</div>
     			<div class="col-md-4">
     				<label for="senha">Senha:</label>
-                    <button class="btn btn-default btn-block" disabled>Atualizar Senha</button>
+                    <!--botão para ativar o modal-->
+                    <input type="button" class="btn btn-default btn-block" value="Atualizar Senha" data-toggle="modal" data-target="#alterarSenhaModal"/>
     			</div>
     			<div class="col-md-2">
     				<label for="status">Status:</label>
@@ -60,3 +69,77 @@
 </main>
 </div>
 </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="alterarSenhaModal" tabindex="-1" role="dialog" aria-labelledby="alterarSenhaModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <!-- formulário para alteração da senha -->
+        <form method="post" action="<?= base_url('usuario/salvar_senha')?>">
+        <div class="modal-content">
+            <div class="modal-header bg-dark">
+                <h5 class="modal-title text-white" id="alterarSenhaModalLabel">Atualizar Senha</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!--Notificacação-->
+                <?php
+                    $error = $this->session->flashdata('error');
+                    echo isset($error) ? "<div class='alert alert-danger'>" . $error . "</div>" : "";
+                ?>
+
+                <!--campos do formulário-->
+                <input type="hidden" name="id" value="<?= $usuario['id'] ?>"/>
+                <label for="senha_antiga">Senha antiga:</label>
+                <input type="password" name="senha_antiga" id="senha_antiga" onkeyup="checarSenha()" class="form-control" required/>
+
+                <label for="senha_nova">Nova senha:</label>
+                <input type="password"  name="senha_nova" id="senha_nova" onkeyup="checarSenha()" class="form-control" min="3" required/>
+
+                <label for="senha_confirmar">Confirmar senha:</label>
+                <input type="password"  name="senha_confirmar" id="senha_confirmar" onkeyup="checarSenha()" class="form-control" min="3" required/>
+
+                <!--Mensagem informando se as senhas são iguais ou não-->
+                <div class="col-md-12">
+                    <div id="divcheck"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="submit" class="btn btn-primary" id="enviarsenha" disabled>Salvar</button>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+
+
+<!--script verifica se as senhas são iguais-->
+<script>
+    $(document).ready(function() {
+        $("#senha_antiga").keyup(checarSenha);
+        $("#senha_nova").keyup(checarSenha);
+        $("#senha_confirmar").keyup(checarSenha);   
+    });
+    function checarSenha() {
+        var password = $("#senha_nova").val();
+        var confirmPassword = $("#senha_confirmar").val();
+        var passwordBefore = $("#senha_antiga").val();
+        
+        if (password == passwordBefore){
+            $("#divcheck").html("<span style='color: red'>A senha informada é a mesma do campo da senha antiga!</span>");
+            document.getElementById("enviarsenha").disabled = true;
+        }else if (password == '' || confirmPassword == '') {
+            $("#divcheck").html("<span style='color: red'>Campo de senha vazio!</span>");
+            document.getElementById("enviarsenha").disabled = true;     
+        } else if (password != confirmPassword) {
+            $("#divcheck").html("<span style='color: red'>Senha não conferem!</span>");
+            document.getElementById("enviarsenha").disabled = true;     
+        } else {
+            $("#divcheck").html("<span style='color: green'>Senha são iguais!</span>");
+            document.getElementById("enviarsenha").disabled = false;
+        }   
+    }
+</script>
