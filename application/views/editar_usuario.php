@@ -45,7 +45,11 @@
                         <option value="0">Escolher...</option>
                         <!--carregando o select com os dados do BD-->
                         <?php foreach ($estados as $estado) : ?>
-                            <option value="<?= $estado['id']?>"><?= $estado['nome'] ?></option>
+                            <?php if ($estado['id'] == $usuario['estado_id']) : ?>
+                                <option value="<?= $estado['id']?>" selected><?= $estado['estado_nome'] ?></option>
+                            <?php else : ?>
+                                <option value="<?= $estado['id']?>"><?= $estado['estado_nome'] ?></option>
+                            <?php endif; ?>
                         <?php endforeach; ?>                        
                     </select>
                 </div>
@@ -55,7 +59,11 @@
                         <option value="0">Escolher...</option> 
                         <!--Carregando o select com os dados do BD-->
                         <?php foreach ($cidades as $cidade) : ?>
-                            <option value="<?= $cidade['id'] ?>"><?= $cidade['nome'] ?></option>
+                            <?php if ($cidade['id'] === $usuario['cidade_id']) : ?>
+                                <option value="<?= $cidade['id'] ?>" selected><?= $cidade['cidade_nome'] ?></option>
+                            <?php else : ?>
+                                <option value="<?= $cidade['id'] ?>"><?= $cidade['cidade_nome'] ?></option>
+                            <?php endif; ?>
                         <?php endforeach; ?>
                     </select>                   
                 </div>
