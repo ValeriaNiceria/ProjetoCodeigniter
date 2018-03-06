@@ -30,18 +30,19 @@
                   Home <span class="sr-only">(current)</span>
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="shopping-cart"></span>
-                  Produtos
-                </a>
-              </li>
                <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="<?= base_url('produto') ?>">
                   <span data-feather="list"></span>
                   Lista Produtos
                 </a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="shopping-cart"></span>
+                  Cadastro Produto
+                </a>
+              </li>
+              
             </ul>
 
 

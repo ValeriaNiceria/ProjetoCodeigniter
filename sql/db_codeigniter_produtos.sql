@@ -16,35 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `usuarios`
+-- Table structure for table `produtos`
 --
 
-DROP TABLE IF EXISTS `usuarios`;
+DROP TABLE IF EXISTS `produtos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `usuarios` (
+CREATE TABLE `produtos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) DEFAULT NULL,
-  `cpf` varchar(20) DEFAULT NULL,
-  `endereco` varchar(256) DEFAULT NULL,
-  `estado_id` int(11) DEFAULT NULL,
-  `cidade_id` int(11) DEFAULT NULL,
-  `email` varchar(256) DEFAULT NULL,
-  `senha` varchar(256) DEFAULT NULL,
-  `status` int(11) DEFAULT NULL,
-  `nivel` int(11) DEFAULT NULL,
+  `descricao` text,
+  `preco` double DEFAULT NULL,
+  `usuario_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `usuarios`
+-- Dumping data for table `produtos`
 --
 
-LOCK TABLES `usuarios` WRITE;
-/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (14,'Maria Aparecida','120.909.890-09','Rua Belo Horizonte, 1000',13,1,'maria@maria.com','4badaee57fed5610012a296273158f5f',1,1);
-/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
+LOCK TABLES `produtos` WRITE;
+/*!40000 ALTER TABLE `produtos` DISABLE KEYS */;
+INSERT INTO `produtos` VALUES (1,'Computado','Desktop Samsung usado',1120.9,NULL);
+/*!40000 ALTER TABLE `produtos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
