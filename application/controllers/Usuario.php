@@ -9,8 +9,20 @@ class Usuario extends CI_Controller {
 		$this->load->model('Usuario_model');
 	}
 
+
+	public function verificar_sessao()
+	{
+		if ($this->session->userdata('logado') == false) {
+			redirect('login');
+		}
+	}
+
+
 	public function index()
 	{
+		/*verifica se o usuário está logado*/
+		$this->verificar_sessao();
+
 		$tabela = "usuarios";
 
 		$dados['usuarios'] = $this->Usuario_model->getAll($tabela);
@@ -24,6 +36,9 @@ class Usuario extends CI_Controller {
 
 	public function cadastro() 
 	{
+		/*verifica se o usuário está logado*/
+		$this->verificar_sessao();
+
 		$this->load->view('includes/html_header');
 		$this->load->view('includes/menu');
 		$this->load->view('cadastro_usuario');
@@ -33,6 +48,9 @@ class Usuario extends CI_Controller {
 
 	public function cadastrar()
 	{
+		/*verifica se o usuário está logado*/
+		$this->verificar_sessao();
+
 		$dados = array(
 			'nome' => $this->input->post('nome'),
 			'cpf' => $this->input->post('cpf'),
@@ -58,6 +76,9 @@ class Usuario extends CI_Controller {
 
 	public function excluir()
 	{
+		/*verifica se o usuário está logado*/
+		$this->verificar_sessao();
+		
 		$id = $this->uri->segment(3);
 		$tabela = "usuarios";
 
@@ -75,6 +96,9 @@ class Usuario extends CI_Controller {
 
 	public function atualizar()
 	{
+		/*verifica se o usuário está logado*/
+		$this->verificar_sessao();
+
 		$id = $this->uri->segment(3);
 		$tabela = "usuarios";
 
@@ -115,6 +139,9 @@ class Usuario extends CI_Controller {
 
 	public function salvar_senha()
 	{
+		/*verifica se o usuário está logado*/
+		$this->verificar_sessao();
+
 		$id = $this->input->post('id');
 		$tabela = "usuarios";
 

@@ -14,18 +14,24 @@
 </head>
 
 <body class="text-center">
-	<form class="form-signin">
+
+	<form action="<?= base_url('login/logar') ?>" method="post" class="form-signin">
 		<h1 class="h1 mb-3 font-weight-normal">Login</h1>
+		
 		<label for="email" class="sr-only">Email</label>
-		<input type="email" name="email" id="email" class="form-control" placeholder="Informe o email" >
+		<input type="email" name="email" id="email" class="form-control" placeholder="Informe o email" autofocus required>
+		
 		<label for="senha" class="sr-only">Senha</label>
-		<input type="password" name="senha" id="senha" class="form-control" placeholder="Informe a senha" required>
-		<div class="checkbox mb-3">
-			<label>
-				<input type="checkbox" value="remember-me"> Remember me
-			</label>
-		</div>
+		<input type="password" name="senha" id="senha" class="form-control mt-4" placeholder="Informe a senha" required>
+		
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Logar</button>
+
+		<!-- Notificação -->
+		<?php
+			$error = $this->session->flashdata('error');
+			echo isset($error) ? "<div class='text-danger'>" . $error . "</div>" : "";
+		?>
+
 	</form>
 </body>
 </html>

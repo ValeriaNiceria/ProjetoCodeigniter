@@ -69,4 +69,18 @@ class MY_Model extends CI_Model {
 		}
 		return FALSE;
 	}
+
+
+	public function login($tabela, $email, $senha)
+	{
+		if (isset($tabela) && isset($email) && isset($senha))
+		{
+			$this->db->where('email', $email);
+			$this->db->where('senha', $senha);
+			$this->db->where('status', 1);
+
+			return $this->db->get($tabela)->result();
+		}
+		return FALSE;
+	}
 }
