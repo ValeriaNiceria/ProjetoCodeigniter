@@ -25,6 +25,9 @@ class Usuario extends CI_Controller {
 
 		$tabela = "usuarios";
 
+		//Utilizando o Inner Join
+		$this->db->join('estados', 'estados.id = estado_id');
+
 		$dados['usuarios'] = $this->Usuario_model->getAll($tabela);
 
 		$this->load->view('includes/html_header');

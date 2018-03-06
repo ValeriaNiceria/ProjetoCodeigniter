@@ -42,7 +42,7 @@
                         <option value="0">Escolher...</option>
                         <!--carregando o select com os dados do BD-->
                         <?php foreach ($estados as $estado) : ?>
-                            <option value="<?= $estado['id']?>"><?= $estado['nome'] ?></option>
+                            <option value="<?= $estado['id']?>"><?= $estado['estado_nome'] ?></option>
                         <?php endforeach; ?>                        
                     </select>
                 </div>
@@ -52,7 +52,7 @@
                         <option value="0">Escolher...</option> 
                         <!--Carregando o select com os dados do BD-->
                         <?php foreach ($cidades as $cidade) : ?>
-                            <option value="<?= $cidade['id'] ?>"><?= $cidade['nome'] ?></option>
+                            <option value="<?= $cidade['id'] ?>"><?= $cidade['cidade_nome'] ?></option>
                         <?php endforeach; ?>
                     </select>                   
                 </div>

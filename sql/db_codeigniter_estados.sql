@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS `estados`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `estados` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(50) DEFAULT NULL,
+  `estado_nome` varchar(50) DEFAULT NULL,
   `sigla` varchar(2) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
@@ -49,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-03-06 14:03:36
+-- Dump completed on 2018-03-06 15:15:18

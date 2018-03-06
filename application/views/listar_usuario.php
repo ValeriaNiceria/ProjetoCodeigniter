@@ -29,6 +29,7 @@
 						<th>ID</th>
 						<th>Nome</th>
 						<th>Email</th>
+						<th>Estado</th>
 						<th>Nível</th>
 						<th>Status</th>
 						<th></th>
@@ -40,6 +41,7 @@
 						<td><?= $usuario['id'] ?></td>
 						<td><?= $usuario['nome'] ?></td>
 						<td><?= $usuario['email'] ?></td>
+						<td><?= $usuario['estado_nome'] ?></td>
 						<td><?= ($usuario['nivel']) ? "Administrador" : "Usuário"; ?></td>
 						<td><?= ($usuario['status']) ? "Ativo" : "Inativo"; ?></td>
 						<td>
