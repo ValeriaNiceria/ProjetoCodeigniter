@@ -79,7 +79,7 @@ class MY_Model extends CI_Model {
 			$this->db->where('senha', $senha);
 			$this->db->where('status', 1);
 
-			return $this->db->get($tabela)->result();
+			return $this->db->get($tabela)->row_array();
 		}
 		return FALSE;
 	}

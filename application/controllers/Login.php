@@ -18,25 +18,25 @@ class Login extends CI_Controller {
 
 	public function logar()
 	{
-		$email = $this->input->post('email');
+		/*Pegar os dados do form*/
+        $email = $this->input->post('email');
 		$senha = md5($this->input->post('senha'));
+		$tabela = 'usuarios';
 
-		$tabela = "usuarios";
 		$dadosLogin = $this->Usuario_model->login($tabela, $email, $senha);
 
-		if (count($dadosLogin) == 1)
+		if (!empty($dadosLogin))
 		{
 			$dados = array(
 				'logado' => TRUE,
-				'id' => $dadosLogin->id,
-				'nome' => $dadosLogin->nome
+				'id' => $dadosLogin['id'],
 			);
 
 			$this->session->set_userdata($dados);
 			redirect('dashboard');
 		} else
 		{
-			$this->session->set_flashdata('error', 'Email ou senha inválidos');
+			$this->session->set_flashdata('error', 'Usuário ou senha inválidos!');
 			redirect('login');
 		}
 	}

@@ -18,27 +18,8 @@ class Usuario extends CI_Controller {
 	}
 
 
-	public function index()
-	{
-		/*verifica se o usuário está logado*/
-		$this->verificar_sessao();
-
-		$tabela = "usuarios";
-
-		$dados['usuarios'] = $this->Usuario_model->getAll($tabela);
-
-		$this->load->view('includes/html_header');
-		$this->load->view('includes/menu');
-		$this->load->view('listar_usuario', $dados);
-		$this->load->view('includes/html_footer');
-	}
-
-
 	public function cadastro() 
 	{
-		/*verifica se o usuário está logado*/
-		$this->verificar_sessao();
-
 		//Pegando os estados do banco de dados
 		$this->load->model('Estado_model');
 		$tabela = "estados";
@@ -51,7 +32,6 @@ class Usuario extends CI_Controller {
 
 		/*Carregando a página*/
 		$this->load->view('includes/html_header');
-		$this->load->view('includes/menu');
 		$this->load->view('cadastro_usuario', $dados);
 		$this->load->view('includes/html_footer');	
 	}
@@ -59,9 +39,6 @@ class Usuario extends CI_Controller {
 
 	public function cadastrar()
 	{
-		/*verifica se o usuário está logado*/
-		$this->verificar_sessao();
-
 		$dados = array(
 			'nome' => $this->input->post('nome'),
 			'cpf' => $this->input->post('cpf'),
@@ -79,10 +56,11 @@ class Usuario extends CI_Controller {
 		if ($this->Usuario_model->cadastrar($tabela, $dados))
 		{
 			$this->session->set_flashdata('success', 'Usuário cadastrado com sucesso.');
-			redirect('usuario');
+			redirect('login');
 		} else 
 		{
 			$this->session->set_flashdata('error', 'Não foi possível realizar o cadastro.');
+			redirect('usuario/cadastro');
 		}
 	}
 
@@ -98,11 +76,12 @@ class Usuario extends CI_Controller {
 		if ($this->Usuario_model->excluir($id, $tabela))
 		{
 			$this->session->set_flashdata('success', 'Usuário foi excluído com sucesso.');
-			redirect('usuario');
+			$this->session->unset_userdata('logado');
+			redirect('login');
 		} else
 		{
 			$this->session->set_flashdata('error', 'Não foi possível excluir o usuário.');
-			redirect('usuario');
+			redirect('usuario/perfil');
 		}
 	}
 
@@ -155,11 +134,11 @@ class Usuario extends CI_Controller {
 			if ($this->Usuario_model->atualizar($id, $tabela, $dados))
 			{
 				$this->session->set_flashdata('success', 'Usuário atualizado com sucesso.');
-				redirect('usuario');
+				redirect('usuario/perfil');
 			} else
 			{
 				$this->session->set_flashdata('error', 'Não foi possível atualizar o usuário.');
-				redirect('usuario');
+				redirect('usuario/perfil');
 			}
 		}
 	}
@@ -198,6 +177,24 @@ class Usuario extends CI_Controller {
 			$this->session->set_flashdata('error', 'Senha antiga não é a mesma que está cadastrada no banco.');
 			redirect("usuario/atualizar/".$id);
 		}
+	}
+
+
+	public function perfil()
+	{
+		$id = $this->session->userdata('id');
+		$tabela = "usuarios";
+		$dados['usuario'] = $this->Usuario_model->getById($id, $tabela);
+
+		$estado_id = $dados['usuario']['estado_id'];
+		$tabela = "estados";
+		$dados['estado'] = $this->Usuario_model->getById($estado_id, $tabela);
+
+
+		$this->load->view('includes/html_header');
+		$this->load->view('includes/menu');
+		$this->load->view('perfil', $dados);
+		$this->load->view('includes/html_footer');
 	}
 
 }

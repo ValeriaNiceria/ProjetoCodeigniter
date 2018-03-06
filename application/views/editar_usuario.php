@@ -93,8 +93,8 @@
             <input type="hidden" name="id" value="<?= $usuario['id'] ?>"/>
 
 		    <div class="mt-3 float-right">
-		    	<button type="submit" class="btn btn-success">Atualizar</button>
-		    	<a href="<?= base_url('usuario'); ?>"  class="btn btn-secondary">Cancelar</a>
+		    	<button type="submit" class="btn btn-success"><span data-feather="check" class="mt-1 mr-1"></span>Atualizar</button>
+		    	<a href="<?= base_url('usuario/perfil'); ?>"  class="btn btn-secondary"><span data-feather="x" class="mt-1 mr-1"></span>Cancelar</a>
 		    </div>
 
     	</form>
@@ -140,8 +140,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                <button type="submit" class="btn btn-primary" id="enviarsenha" disabled>Salvar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><span data-feather="x" class="mt-1 mr-1"></span>Fechar</button>
+                <button type="submit" class="btn btn-primary" id="enviarsenha" disabled><span data-feather="save" class="mt-1 mr-1"></span>Salvar</button>
             </div>
         </div>
         </form>
