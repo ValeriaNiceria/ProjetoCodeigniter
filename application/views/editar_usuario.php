@@ -93,7 +93,7 @@
                 <!--campos do formulário-->
                 <input type="hidden" name="id" value="<?= $usuario['id'] ?>"/>
                 <label for="senha_antiga">Senha antiga:</label>
-                <input type="password" name="senha_antiga" id="senha_antiga" onkeyup="checarSenha()" class="form-control" required/>
+                <input type="password" name="senha_antiga" id="senha_antiga" onkeyup="checarSenha()" class="form-control" required autofocus/>
 
                 <label for="senha_nova">Nova senha:</label>
                 <input type="password"  name="senha_nova" id="senha_nova" onkeyup="checarSenha()" class="form-control" min="3" required/>
