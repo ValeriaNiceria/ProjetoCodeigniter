@@ -39,9 +39,20 @@ class Usuario extends CI_Controller {
 		/*verifica se o usuário está logado*/
 		$this->verificar_sessao();
 
+		//Pegando os estados do banco de dados
+		$this->load->model('Estado_model');
+		$tabela = "estados";
+		$dados['estados'] = $this->Estado_model->getAll($tabela);
+
+		//Pegando as cidades do banco de dados
+		$this->load->model('Cidade_model');
+		$tabela = "cidades";
+		$dados['cidades'] = $this->Cidade_model->getAll($tabela);
+
+		/*Carregando a página*/
 		$this->load->view('includes/html_header');
 		$this->load->view('includes/menu');
-		$this->load->view('cadastro_usuario');
+		$this->load->view('cadastro_usuario', $dados);
 		$this->load->view('includes/html_footer');	
 	}
 
@@ -55,6 +66,8 @@ class Usuario extends CI_Controller {
 			'nome' => $this->input->post('nome'),
 			'cpf' => $this->input->post('cpf'),
 			'endereco' => $this->input->post('endereco'),
+			'estado_id' => $this->input->post('estado'),
+			'cidade_id' => $this->input->post('cidade'),
 			'email' => $this->input->post('email'),
 			'senha' => md5($this->input->post('senha')),
 			'nivel' => $this->input->post('nivel'),
@@ -99,15 +112,29 @@ class Usuario extends CI_Controller {
 		/*verifica se o usuário está logado*/
 		$this->verificar_sessao();
 
+		//pegando o id na url
 		$id = $this->uri->segment(3);
 		$tabela = "usuarios";
 
+		//Pegando os dados do usuário
 		$dados['usuario'] = $this->Usuario_model->getById($id, $tabela);
 
+		//Pegando os estados do banco de dados
+		$this->load->model('Estado_model');
+		$tabela = "estados";
+		$dados['estados'] = $this->Estado_model->getAll($tabela);
+
+		//Pegando as cidades do banco de dados
+		$this->load->model('Cidade_model');
+		$tabela = "cidades";
+		$dados['cidades'] = $this->Cidade_model->getAll($tabela);
+
+		/*Carregando a página de edição de usuarios*/
 		$this->load->view('includes/html_header');
 		$this->load->view('includes/menu');
 		$this->load->view('editar_usuario', $dados);
 		$this->load->view('includes/html_footer');	
+
 
 		if ($_POST)
 		{
@@ -118,6 +145,8 @@ class Usuario extends CI_Controller {
 				'nome' => $this->input->post('nome'),
 				'cpf' => $this->input->post('cpf'),
 				'endereco' => $this->input->post('endereco'),
+				'estado_id' => $this->input->post('estado'),
+				'cidade_id' => $this->input->post('cidade'),
 				'email' => $this->input->post('email'),
 				'nivel' => $this->input->post('nivel'),
 				'status' => $this->input->post('status')

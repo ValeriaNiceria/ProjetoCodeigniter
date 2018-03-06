@@ -35,6 +35,29 @@
     			</div>
 			</div>
 
+             <div class="row">
+                <div class="col-md-5">
+                    <label for="estado">Estado:</label>
+                    <select name="estado" id="estado" class="custom-select">
+                        <option value="0">Escolher...</option>
+                        <!--carregando o select com os dados do BD-->
+                        <?php foreach ($estados as $estado) : ?>
+                            <option value="<?= $estado['id']?>"><?= $estado['nome'] ?></option>
+                        <?php endforeach; ?>                        
+                    </select>
+                </div>
+                <div class="col-md-7"> 
+                    <label for="cidade">Cidade:</label>
+                    <select name="cidade" id="cidade" class="custom-select">
+                        <option value="0">Escolher...</option> 
+                        <!--Carregando o select com os dados do BD-->
+                        <?php foreach ($cidades as $cidade) : ?>
+                            <option value="<?= $cidade['id'] ?>"><?= $cidade['nome'] ?></option>
+                        <?php endforeach; ?>
+                    </select>                   
+                </div>
+            </div>
+
     		<div class="row">
     			<div class="col-md-6">
     				<label for="email">Email:</label>
@@ -53,6 +76,8 @@
 		    		</select>
     			</div>
     		</div>
+
+           
 
 		    <div class="mt-3 float-right">
 		    	<button type="submit" class="btn btn-success">Enviar</button>
