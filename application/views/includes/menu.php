@@ -37,9 +37,9 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="<?= base_url('produto/cadastro') ?>">
                   <span data-feather="shopping-cart"></span>
-                  Cadastro Produto
+                  Cadastrar Produto
                 </a>
               </li>
               

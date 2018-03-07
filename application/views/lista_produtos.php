@@ -2,9 +2,17 @@
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
     <h1 class="h2">Produtos</h1>
     <div class="col-md-2">
-      <a href="" class="btn btn-primary btn-block"><span data-feather="plus" class="mr-1"></span>Novo Produto</a>
+      <a href="<?= base_url('produto/cadastro') ?>" class="btn btn-primary btn-block"><span data-feather="plus" class="mr-1"></span>Novo Produto</a>
     </div>
   </div>
+
+  <!--Notifição-->
+  <?php
+    $error = $this->session->flashdata('error');
+    $success = $this->session->flashdata('success');
+    echo isset($error) ? "<div class='alert alert-danger'>" . $error . "</div>" : "";
+    echo isset($success) ? "<div class='alert alert-success'>" . $success . "</div>" : "";
+  ?>
 
   <table class="table">
     <thead class="thead-dark">
@@ -25,7 +33,7 @@
           <td><?= $produto['preco'] ?></td>
           <td>
             <a href="" class="btn btn-info"><span data-feather="edit" class="mr-1"></span>Atualizar</a>
-            <a href="" class="btn btn-danger"><span data-feather="trash" class="mr-1"></span>Remover</a>
+            <a href="" class="btn btn-danger" onclick="return confirm('Você tem certeza?');"><span data-feather="trash" class="mr-1"></span>Remover</a>
           </td>
         </tr>
       </tbody>
