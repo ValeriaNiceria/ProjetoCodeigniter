@@ -137,4 +137,20 @@ class Produto extends CI_Controller {
 			}
 		}
 	}
+
+
+	public function pesquisar()
+	{
+		//verifica se o usuário está logado
+		$this->verificar_sessao();
+
+		$pesquisa = $this->input->post('pesquisar');
+		$tabela = "produtos";
+		$dados['produtos'] = $this->Produto_model->pesquisar($pesquisa, $tabela);
+
+		$this->load->view('includes/html_header');
+		$this->load->view('includes/menu');
+		$this->load->view('lista_produtos', $dados);
+		$this->load->view('includes/html_footer');	
+	}
 }

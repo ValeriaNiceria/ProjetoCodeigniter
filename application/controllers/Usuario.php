@@ -196,5 +196,4 @@ class Usuario extends CI_Controller {
 		$this->load->view('perfil', $dados);
 		$this->load->view('includes/html_footer');
 	}
-
 }

@@ -6,6 +6,20 @@
     </div>
   </div>
 
+  <!--Busca-->
+  <div class="col-md-12 mb-3">
+    <form action="<?= base_url('produto/pesquisar') ?>" method="post">
+      <div class="row">
+        <div class="col-md-10">
+          <input type="text" name="pesquisar" placeholder="Pesquisar produto..." class="form-control"/>
+        </div>
+        <div class="col-md-2">
+         <button class="btn btn-outline-secondary btn-block"><span data-feather="search" class="mr-1"></span>Pesquisar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
   <!--Notifição-->
   <?php
     $error = $this->session->flashdata('error');
@@ -25,7 +39,7 @@
           <th>Nome</th>
           <th>Descrição</th>
           <th>Preço</th>
-          <th></th>
+          <th colspan="3"></th>
         </tr>
       </thead>
       <?php foreach ($produtos as $produto) : ?>
@@ -36,8 +50,13 @@
             <td><?= $produto['descricao'] ?></td>
             <td><?= $produto['preco'] ?></td>
             <td>
-              <a href="<?= base_url('produto/atualizar/' . $produto['id']) ?>" class="btn btn-info"><span data-feather="edit" class="mr-1"></span>Atualizar</a>
-              <a href="<?= base_url('produto/excluir/' . $produto['id']) ?>" class="btn btn-danger" onclick="return confirm('Você tem certeza?');"><span data-feather="trash" class="mr-1"></span>Remover</a>
+              <a href="<?= base_url() ?>" class="btn btn-info btn-block"><span data-feather="eye" class="mr-1"></span></a>
+            </td>
+            <td>
+              <a href="<?= base_url('produto/atualizar/' . $produto['id']) ?>" class="btn btn-warning btn-block"><span data-feather="edit" class="mr-1"></span></a>
+            </td>
+            <td>
+              <a href="<?= base_url('produto/excluir/' . $produto['id']) ?>" class="btn btn-danger btn-block" onclick="return confirm('Você tem certeza?');"><span data-feather="trash" class="mr-1"></span></a>
             </td>
           </tr>
         </tbody>
