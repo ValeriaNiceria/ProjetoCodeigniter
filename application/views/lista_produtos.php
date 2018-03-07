@@ -50,13 +50,13 @@
             <td><?= $produto['descricao'] ?></td>
             <td><?= $produto['preco'] ?></td>
             <td>
-              <a href="<?= base_url() ?>" class="btn btn-info btn-block"><span data-feather="eye" class="mr-1"></span></a>
+              <a href="<?= base_url() ?>" class="btn btn-info btn-block"><span data-feather="eye"></span></a>
             </td>
             <td>
-              <a href="<?= base_url('produto/atualizar/' . $produto['id']) ?>" class="btn btn-warning btn-block"><span data-feather="edit" class="mr-1"></span></a>
+              <a href="<?= base_url('produto/atualizar/' . $produto['id']) ?>" class="btn btn-warning btn-block"><span data-feather="edit"></span></a>
             </td>
             <td>
-              <a href="<?= base_url('produto/excluir/' . $produto['id']) ?>" class="btn btn-danger btn-block" onclick="return confirm('Você tem certeza?');"><span data-feather="trash" class="mr-1"></span></a>
+              <a href="<?= base_url('produto/excluir/' . $produto['id']) ?>" class="btn btn-danger btn-block" onclick="return confirm('Você tem certeza?');"><span data-feather="trash"></span></a>
             </td>
           </tr>
         </tbody>
@@ -65,7 +65,11 @@
   <?php endif; ?>  
 
 
-        
+<!--Paginação-->
+<div class="paginacao">  
+  <?php echo $paginacao_produtos; ?>
+</div>
+      
   </div>
 </main>
 </div>

@@ -23,9 +23,29 @@ class Produto extends CI_Controller {
 		//verifica se o usuário está logado
 		$this->verificar_sessao();
 
-		$tabela = "produtos";
-		$dados['produtos'] = $this->Produto_model->getAll($tabela);
+		$por_pagina = 2; //número de registros por página
+		$inicio = ($this->uri->segment(2)) ? $this->uri->segment(2) : ''; //Está pegando o segundo campo da url
 
+		$tabela = "produtos";
+		$dados['produtos'] = $this->Produto_model->findPagination($tabela, $por_pagina, $inicio);
+
+
+		// ** Dados para paginação ** 
+		$this->load->library('pagination');
+		
+		$config['base_url'] = base_url() . 'page/';
+		$config['per_page'] = $por_pagina; 
+		$config['total_rows'] = $this->Produto_model->num_rows($tabela);
+		$config['num_links'] = 5;
+		$config['first_url'] = '0';
+		$config['uri_segment'] = 2;
+		//** Inicializar a paginação **
+		$this->pagination->initialize($config);
+		//** Criar links da paginação ** 
+		$dados['paginacao_produtos'] = $this->pagination->create_links(); 
+
+
+		/*Carregando a página*/
 		$this->load->view('includes/html_header');
 		$this->load->view('includes/menu');
 		$this->load->view('lista_produtos', $dados);

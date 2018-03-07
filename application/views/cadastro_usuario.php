@@ -28,8 +28,8 @@
                 </div>
                 <div class="col-md-2">
                     <label for="nivel">Nível:</label>
-                    <select class="custom-select mr-sm-2" id="nivel" name="nivel">
-                        <option selected>Escolher...</option>
+                    <select class="custom-select mr-sm-2" id="nivel" name="nivel" required>
+                        <option selected disabled>Escolher...</option>
                         <option value="1">Administrador</option>
                         <option value="0">Usuário</option>
                     </select>
@@ -39,8 +39,8 @@
              <div class="row">
                 <div class="col-md-5">
                     <label for="estado">Estado:</label>
-                    <select name="estado" id="estado" class="custom-select">
-                        <option value="0">Escolher...</option>
+                    <select name="estado" id="estado" class="custom-select" required>
+                        <option selected disabled>Escolher...</option>
                         <!--carregando o select com os dados do BD-->
                         <?php foreach ($estados as $estado) : ?>
                             <option value="<?= $estado['id']?>"><?= $estado['estado_nome'] ?></option>
@@ -49,8 +49,8 @@
                 </div>
                 <div class="col-md-7"> 
                     <label for="cidade">Cidade:</label>
-                    <select name="cidade" id="cidade" class="custom-select">
-                        <option value="0">Escolher...</option> 
+                    <select name="cidade" id="cidade" class="custom-select" required>
+                        <option selected disabled>Escolher...</option> 
                         <!--Carregando o select com os dados do BD-->
                         <?php foreach ($cidades as $cidade) : ?>
                             <option value="<?= $cidade['id'] ?>"><?= $cidade['cidade_nome'] ?></option>
@@ -70,8 +70,8 @@
                 </div>
                 <div class="col-md-2">
                     <label for="status">Status:</label>
-                    <select class="custom-select mr-sm-2" id="status" name="status">
-                        <option selected>Escolher...</option>
+                    <select class="custom-select mr-sm-2" id="status" name="status" required>
+                        <option selected disabled>Escolher...</option>
                         <option value="1">Ativo</option>
                         <option value="0">Inativo</option>
                     </select>

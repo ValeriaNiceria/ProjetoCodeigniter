@@ -53,3 +53,7 @@ $route['default_controller'] = 'Dashboard';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+
+$route['page/(:num)'] = 'produto/index/$1';
+$route['page'] = 'produto';
+

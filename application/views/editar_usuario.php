@@ -29,8 +29,8 @@
 				</div>
 				<div class="col-md-2">
     				<label for="nivel">Nível:</label>
-    				<select class="custom-select mr-sm-2" id="nivel" name="nivel">
-                        <option selected>Escolher...</option>
+    				<select class="custom-select mr-sm-2" id="nivel" name="nivel" required>
+                        <option selected disabled>Escolher...</option>
 				    	<option value="1" <?= ($usuario['nivel'] == 1) ? 'selected' : ''; ?>> Administrador </option>
 				    	<option value="0" <?= ($usuario['nivel'] == 0) ? 'selected' : ''; ?>> Usuário </option>
 		    		</select>
@@ -41,8 +41,8 @@
              <div class="row">
                 <div class="col-md-5">
                     <label for="estado">Estado:</label>
-                    <select name="estado" id="estado" class="custom-select">
-                        <option value="0">Escolher...</option>
+                    <select name="estado" id="estado" class="custom-select" required>
+                        <option selected disabled>Escolher...</option>
                         <!--carregando o select com os dados do BD-->
                         <?php foreach ($estados as $estado) : ?>
                             <?php if ($estado['id'] == $usuario['estado_id']) : ?>
@@ -55,8 +55,8 @@
                 </div>
                 <div class="col-md-7"> 
                     <label for="cidade">Cidade:</label>
-                    <select name="cidade" id="cidade" class="custom-select">
-                        <option value="0">Escolher...</option> 
+                    <select name="cidade" id="cidade" class="custom-select" required>
+                        <option selected disabled>Escolher...</option> 
                         <!--Carregando o select com os dados do BD-->
                         <?php foreach ($cidades as $cidade) : ?>
                             <?php if ($cidade['id'] === $usuario['cidade_id']) : ?>
@@ -82,8 +82,8 @@
     			</div>
     			<div class="col-md-2">
     				<label for="status">Status:</label>
-    				<select class="custom-select mr-sm-2" id="status" name="status">
-                        <option selected>Escolher...</option>
+    				<select class="custom-select mr-sm-2" id="status" name="status" required>
+                        <option selected disabled>Escolher...</option>
 				    	<option value="1" <?= ($usuario['status'] == 1) ? 'selected' : ''; ?>> Ativo </option>
                         <option value="0" <?= ($usuario['status'] == 0) ? 'selected' : ''; ?>> Inativo </option>
 		    		</select>

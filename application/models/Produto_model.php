@@ -14,10 +14,29 @@ class Produto_model extends MY_Model {
 			if ($query->num_rows() > 0)
 			{
 				return $query->result_array();
+			}else
+			{
+				return NULL;
 			}
-
 		}
 		return FALSE;
 	}
+
+
+
+	public function findPagination($tabela, $por_pagina, $inicio)
+	{
+		$this->db->limit($por_pagina, $inicio);
+		$query = $this->db->get($tabela);
+		return $query->result_array();
+	}
+
+
+
+	public function num_rows($tabela)
+    {
+        $query = $this->db->get($tabela);
+        return $query->num_rows();
+    }
 
 }
