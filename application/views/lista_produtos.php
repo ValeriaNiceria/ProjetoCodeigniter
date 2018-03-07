@@ -36,7 +36,7 @@
             <td><?= $produto['descricao'] ?></td>
             <td><?= $produto['preco'] ?></td>
             <td>
-              <a href="" class="btn btn-info"><span data-feather="edit" class="mr-1"></span>Atualizar</a>
+              <a href="<?= base_url('produto/atualizar/' . $produto['id']) ?>" class="btn btn-info"><span data-feather="edit" class="mr-1"></span>Atualizar</a>
               <a href="<?= base_url('produto/excluir/' . $produto['id']) ?>" class="btn btn-danger" onclick="return confirm('Você tem certeza?');"><span data-feather="trash" class="mr-1"></span>Remover</a>
             </td>
           </tr>

@@ -94,4 +94,47 @@ class Produto extends CI_Controller {
 			redirect('produto');
 		}
 	}
+
+
+	public function atualizar()
+	{
+		//verificar se o usuário está logado
+		$this->verificar_sessao();
+
+		$id = $this->uri->segment(3);
+		$tabela = "produtos";
+
+		$dados['produto'] = $this->Produto_model->getById($id, $tabela);
+
+		$this->load->view('includes/html_header');
+		$this->load->view('includes/menu');
+		$this->load->view('editar_produto', $dados);
+		$this->load->view('includes/html_footer');
+
+		if ($_POST)
+		{
+			$nome = $this->input->post('nome');
+			$descricao = $this->input->post('descricao');
+			$preco = $this->input->post('preco');
+			$id = $this->input->post('id');
+
+			$tabela = "produtos";
+
+			$dados = array(
+				'nome' => $nome,
+				'descricao' => $descricao,
+				'preco' => $preco
+			);
+
+			if ($this->Produto_model->atualizar($id, $tabela, $dados))
+			{
+				$this->session->set_flashdata('success', 'Produto atualizado com sucesso.');
+				redirect('produto');
+			} else
+			{
+				$this->session->set_flashdata('error', 'Não foi possível atualizar o produto');
+				redirect('produto');
+			}
+		}
+	}
 }
