@@ -73,4 +73,25 @@ class Produto extends CI_Controller {
 			redirect('produto');
 		}
 	}
+
+
+
+	public function excluir()
+	{
+		//verificar se o usuário está logado
+		$this->verificar_sessao();
+
+		$id = $this->uri->segment(3);
+		$tabela = "produtos";
+
+		if ($this->Produto_model->excluir($id, $tabela))
+		{
+			$this->session->set_flashdata('success', 'Produto excluído com sucesso.');
+			redirect('produto');
+		}else
+		{
+			$this->session->set_flashdata('error', 'Não foi possível excluir o produto.');
+			redirect('produto');
+		}
+	}
 }

@@ -14,32 +14,36 @@
     echo isset($success) ? "<div class='alert alert-success'>" . $success . "</div>" : "";
   ?>
 
-  <table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th>ID</th>
-        <th>Nome</th>
-        <th>Descrição</th>
-        <th>Preço</th>
-        <th></th>
-      </tr>
-    </thead>
-    <?php foreach ($produtos as $produto) : ?>
-      <tbody>
+  <!-- lista de produtos-->
+  <?php if (empty($produtos)) : ?>
+    <div class="alert alert-info">Nenhum registro encontrado.</div>
+  <?php else : ?>
+    <table class="table">
+      <thead class="thead-dark">
         <tr>
-          <td><?= $produto['id'] ?></td>
-          <td><?= $produto['nome'] ?></td>
-          <td><?= $produto['descricao'] ?></td>
-          <td><?= $produto['preco'] ?></td>
-          <td>
-            <a href="" class="btn btn-info"><span data-feather="edit" class="mr-1"></span>Atualizar</a>
-            <a href="" class="btn btn-danger" onclick="return confirm('Você tem certeza?');"><span data-feather="trash" class="mr-1"></span>Remover</a>
-          </td>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Descrição</th>
+          <th>Preço</th>
+          <th></th>
         </tr>
-      </tbody>
-    <?php endforeach; ?>
-  </table>
-  
+      </thead>
+      <?php foreach ($produtos as $produto) : ?>
+        <tbody>
+          <tr>
+            <td><?= $produto['id'] ?></td>
+            <td><?= $produto['nome'] ?></td>
+            <td><?= $produto['descricao'] ?></td>
+            <td><?= $produto['preco'] ?></td>
+            <td>
+              <a href="" class="btn btn-info"><span data-feather="edit" class="mr-1"></span>Atualizar</a>
+              <a href="<?= base_url('produto/excluir/' . $produto['id']) ?>" class="btn btn-danger" onclick="return confirm('Você tem certeza?');"><span data-feather="trash" class="mr-1"></span>Remover</a>
+            </td>
+          </tr>
+        </tbody>
+      <?php endforeach; ?>
+    </table>
+  <?php endif; ?>  
 
 
         
