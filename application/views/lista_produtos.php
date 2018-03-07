@@ -67,7 +67,7 @@
 
 <!--Paginação-->
 <div class="paginacao">  
-  <?php echo $paginacao_produtos; ?>
+  <?php echo isset($paginacao_produtos) ? $paginacao_produtos : ''; ?>
 </div>
       
   </div>

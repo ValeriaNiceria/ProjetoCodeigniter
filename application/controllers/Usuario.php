@@ -25,11 +25,6 @@ class Usuario extends CI_Controller {
 		$tabela = "estados";
 		$dados['estados'] = $this->Estado_model->getAll($tabela);
 
-		//Pegando as cidades do banco de dados
-		$this->load->model('Cidade_model');
-		$tabela = "cidades";
-		$dados['cidades'] = $this->Cidade_model->getAll($tabela);
-
 		/*Carregando a página*/
 		$this->load->view('includes/html_header');
 		$this->load->view('cadastro_usuario', $dados);
@@ -42,9 +37,8 @@ class Usuario extends CI_Controller {
 		$dados = array(
 			'nome' => $this->input->post('nome'),
 			'cpf' => $this->input->post('cpf'),
-			'endereco' => $this->input->post('endereco'),
+			'telefone' => $this->input->post('telefone'),
 			'estado_id' => $this->input->post('estado'),
-			'cidade_id' => $this->input->post('cidade'),
 			'email' => $this->input->post('email'),
 			'senha' => md5($this->input->post('senha')),
 			'nivel' => $this->input->post('nivel'),
@@ -103,11 +97,6 @@ class Usuario extends CI_Controller {
 		$tabela = "estados";
 		$dados['estados'] = $this->Estado_model->getAll($tabela);
 
-		//Pegando as cidades do banco de dados
-		$this->load->model('Cidade_model');
-		$tabela = "cidades";
-		$dados['cidades'] = $this->Cidade_model->getAll($tabela);
-
 		/*Carregando a página de edição de usuarios*/
 		$this->load->view('includes/html_header');
 		$this->load->view('includes/menu');
@@ -123,9 +112,8 @@ class Usuario extends CI_Controller {
 			$dados = array(
 				'nome' => $this->input->post('nome'),
 				'cpf' => $this->input->post('cpf'),
-				'endereco' => $this->input->post('endereco'),
+				'telefone' => $this->input->post('telefone'),
 				'estado_id' => $this->input->post('estado'),
-				'cidade_id' => $this->input->post('cidade'),
 				'email' => $this->input->post('email'),
 				'nivel' => $this->input->post('nivel'),
 				'status' => $this->input->post('status')
@@ -133,7 +121,7 @@ class Usuario extends CI_Controller {
 
 			if ($this->Usuario_model->atualizar($id, $tabela, $dados))
 			{
-				$this->session->set_flashdata('success', 'Usuário atualizado com sucesso.');
+				$this->session->set_flashdata('success', 'Dados atualizados com sucesso.');
 				redirect('usuario/perfil');
 			} else
 			{

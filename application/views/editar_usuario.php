@@ -15,30 +15,22 @@
 
    <div class="col-md-12">
     	<form action="<?= base_url('usuario/atualizar')?>" method="post">
-    		<label for="nome">Nome:</label>
-    		<input type="text" name="nome" id="nome" value="<?= $usuario['nome'] ?>" placeholder="Informe o nome" class="form-control" required/>
-
-			<div class="row">
-				<div class="col-md-3">
-					<label for="cpf">CPF:</label>
-    				<input type="text" name="cpf" id="cpf" value="<?= $usuario['cpf'] ?>" placeholder="Informe o cpf" class="form-control" required/>
-				</div>
-				<div class="col-md-7">
-					<label for="endereco">Endereço:</label>
-    				<input type="text" name="endereco" id="endereco" value="<?= $usuario['endereco'] ?>" placeholder="Informe o endereço" class="form-control" required/>
-				</div>
-				<div class="col-md-2">
-    				<label for="nivel">Nível:</label>
-    				<select class="custom-select mr-sm-2" id="nivel" name="nivel" required>
-                        <option selected disabled>Escolher...</option>
-				    	<option value="1" <?= ($usuario['nivel'] == 1) ? 'selected' : ''; ?>> Administrador </option>
-				    	<option value="0" <?= ($usuario['nivel'] == 0) ? 'selected' : ''; ?>> Usuário </option>
-		    		</select>
-    			</div>
-			</div>
-
-            
              <div class="row">
+                <div class="col-md-8">
+                    <label for="nome">Nome:</label>
+                    <input type="text" name="nome" id="nome" value="<?= $usuario['nome'] ?>" placeholder="Informe o nome" class="form-control" autofocus required/>
+                </div>
+                <div class="col-md-4">
+                    <label for="cpf">CPF:</label>
+                    <input type="text" name="cpf" id="cpf" value="<?= $usuario['cpf'] ?>" placeholder="Informe o cpf" class="form-control" required/> 
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="telefone">Telefone:</label>
+                    <input type="text" name="telefone" id="telefone" value="<?= $usuario['telefone'] ?>" placeholder="Informe o telefone" class="form-control" required/> 
+                </div>
                 <div class="col-md-5">
                     <label for="estado">Estado:</label>
                     <select name="estado" id="estado" class="custom-select" required>
@@ -53,42 +45,35 @@
                         <?php endforeach; ?>                        
                     </select>
                 </div>
-                <div class="col-md-7"> 
-                    <label for="cidade">Cidade:</label>
-                    <select name="cidade" id="cidade" class="custom-select" required>
-                        <option selected disabled>Escolher...</option> 
-                        <!--Carregando o select com os dados do BD-->
-                        <?php foreach ($cidades as $cidade) : ?>
-                            <?php if ($cidade['id'] === $usuario['cidade_id']) : ?>
-                                <option value="<?= $cidade['id'] ?>" selected><?= $cidade['cidade_nome'] ?></option>
-                            <?php else : ?>
-                                <option value="<?= $cidade['id'] ?>"><?= $cidade['cidade_nome'] ?></option>
-                            <?php endif; ?>
-                        <?php endforeach; ?>
-                    </select>                   
+                <div class="col-md-3">
+                     <label for="nivel">Nível:</label>
+                    <select class="custom-select mr-sm-2" id="nivel" name="nivel" required>
+                        <option selected disabled>Escolher...</option>
+                        <option value="1" <?= ($usuario['nivel'] == 1) ? 'selected' : ''; ?>> Administrador </option>
+                        <option value="0" <?= ($usuario['nivel'] == 0) ? 'selected' : ''; ?>> Usuário </option>
+                    </select>
                 </div>
             </div>
-
-
-    		<div class="row">
-    			<div class="col-md-6">
-    				<label for="email">Email:</label>
-    				<input type="text" name="email" id="email" value="<?= $usuario['email'] ?>" placeholder="Informe o email" class="form-control" required/>
-    			</div>
-    			<div class="col-md-4">
-    				<label for="senha">Senha:</label>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="email">Email:</label>
+                    <input type="text" name="email" id="email" value="<?= $usuario['email'] ?>" placeholder="Informe o email" class="form-control" required/>
+                </div>
+                <div class="col-md-4">
+                   <label for="senha">Senha:</label>
                     <!--botão para ativar o modal-->
                     <input type="button" class="btn btn-default btn-block" value="Atualizar Senha" data-toggle="modal" data-target="#alterarSenhaModal"/>
-    			</div>
-    			<div class="col-md-2">
-    				<label for="status">Status:</label>
-    				<select class="custom-select mr-sm-2" id="status" name="status" required>
+                </div>
+                <div class="col-md-2">
+                   <label for="status">Status:</label>
+                    <select class="custom-select mr-sm-2" id="status" name="status" required>
                         <option selected disabled>Escolher...</option>
-				    	<option value="1" <?= ($usuario['status'] == 1) ? 'selected' : ''; ?>> Ativo </option>
+                        <option value="1" <?= ($usuario['status'] == 1) ? 'selected' : ''; ?>> Ativo </option>
                         <option value="0" <?= ($usuario['status'] == 0) ? 'selected' : ''; ?>> Inativo </option>
-		    		</select>
-    			</div>
-    		</div>
+                    </select>
+                </div>
+            </div>
 
             <input type="hidden" name="id" value="<?= $usuario['id'] ?>"/>
 
@@ -140,8 +125,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal"><span data-feather="x" class="mt-1 mr-1"></span>Fechar</button>
                 <button type="submit" class="btn btn-primary" id="enviarsenha" disabled><span data-feather="save" class="mt-1 mr-1"></span>Salvar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><span data-feather="x" class="mt-1 mr-1"></span>Fechar</button>
             </div>
         </div>
         </form>

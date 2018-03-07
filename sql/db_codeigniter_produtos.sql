@@ -29,7 +29,7 @@ CREATE TABLE `produtos` (
   `preco` double DEFAULT NULL,
   `usuario_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `produtos` (
 
 LOCK TABLES `produtos` WRITE;
 /*!40000 ALTER TABLE `produtos` DISABLE KEYS */;
-INSERT INTO `produtos` VALUES (4,'Lápis','Caixa de lápis preto',1.99,14),(5,'Caneta vermelha','Caixa de caneta vermelha',12.5,14);
+INSERT INTO `produtos` VALUES (4,'Lápis','Caixa de lápis preto',1.99,14),(5,'Caneta vermelha','Caixa de caneta vermelha',12.5,14),(6,'Computador','Computador samsung',980.99,14),(7,'Lápis rosa','Lápis rosa',2.1,14),(8,'Caneta Preta','Caneta',4.9,14);
 /*!40000 ALTER TABLE `produtos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-03-07 13:06:18
+-- Dump completed on 2018-03-07 17:19:18

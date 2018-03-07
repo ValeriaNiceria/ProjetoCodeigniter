@@ -23,7 +23,7 @@ class Produto extends CI_Controller {
 		//verifica se o usuário está logado
 		$this->verificar_sessao();
 
-		$por_pagina = 2; //número de registros por página
+		$por_pagina = 4; //número de registros por página
 		$inicio = ($this->uri->segment(2)) ? $this->uri->segment(2) : ''; //Está pegando o segundo campo da url
 
 		$tabela = "produtos";
@@ -45,7 +45,7 @@ class Produto extends CI_Controller {
 		$dados['paginacao_produtos'] = $this->pagination->create_links(); 
 
 
-		/*Carregando a página*/
+		/*Carregando a páginas*/
 		$this->load->view('includes/html_header');
 		$this->load->view('includes/menu');
 		$this->load->view('lista_produtos', $dados);

@@ -25,16 +25,15 @@ DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) DEFAULT NULL,
+  `telefone` varchar(16) DEFAULT NULL,
   `cpf` varchar(20) DEFAULT NULL,
-  `endereco` varchar(256) DEFAULT NULL,
   `estado_id` int(11) DEFAULT NULL,
-  `cidade_id` int(11) DEFAULT NULL,
   `email` varchar(256) DEFAULT NULL,
   `senha` varchar(256) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `nivel` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +42,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (14,'Maria Aparecida','120.909.890-09','Rua Belo Horizonte, 1000',13,1,'maria@maria.com','4badaee57fed5610012a296273158f5f',1,1);
+INSERT INTO `usuarios` VALUES (15,'Maria Santos','(31)3333-3333','123.123.123-23',25,'maria@gmail.com','827ccb0eea8a706c4c34a16891f84e7b',1,1);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-03-07 13:06:18
+-- Dump completed on 2018-03-07 17:19:18

@@ -23,7 +23,6 @@ class Produto_model extends MY_Model {
 	}
 
 
-
 	public function findPagination($tabela, $por_pagina, $inicio)
 	{
 		$this->db->limit($por_pagina, $inicio);

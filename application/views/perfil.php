@@ -26,7 +26,7 @@
       </div>
 
       <div class="col-md-10">
-        <span class="font-weight-bold">Endereço:</span> <?= $usuario['endereco']?>
+        <span class="font-weight-bold">Telefone:</span> <?= $usuario['telefone']?>
       </div>
 
       <div class="col-md-10">
