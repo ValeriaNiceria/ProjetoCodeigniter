@@ -38,4 +38,25 @@ class Produto_model extends MY_Model {
         return $query->num_rows();
     }
 
+
+    public function get_ultimos()
+    {	
+    	$this->db->order_by('data', 'desc')->limit(2);
+    	$query = $this->db->get("produtos");
+    	if ($query->num_rows() > 0){
+    		return $query->result_array();
+    	}else {
+    		return NULL;
+    	}
+    }
+
+
+    public function findMeusPagination($id, $tabela, $por_pagina, $inicio)
+	{
+		$this->db->where('vendedor_id', $id);
+		$this->db->limit($por_pagina, $inicio);
+		$query = $this->db->get($tabela);
+		return $query->result_array();
+	}
+
 }

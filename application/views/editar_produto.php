@@ -18,7 +18,7 @@
 
       <div class="float-right mt-4">
         <button class="btn btn-success"><span data-feather="check" class="mr-1"></span>Atualizar</button>
-        <a href="<?= base_url('produto') ?>" class="btn btn-secondary"><span data-feather="x" class="mr-1"></span>Cancelar</a>
+        <a href="<?= base_url('produto/meus_produtos') ?>" class="btn btn-secondary"><span data-feather="x" class="mr-1"></span>Cancelar</a>
       </div>
     </form>
   </div>

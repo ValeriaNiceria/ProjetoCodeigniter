@@ -28,15 +28,21 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?= base_url('produto') ?>">
+            <a class="nav-link" href="<?= base_url('produto/meus_produtos') ?>">
               <span data-feather="list"></span>
-              Lista Produtos
+              Meus Produtos
+            </a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link" href="<?= base_url('produto/cadastro') ?>">
+              <span data-feather="package"></span>
+              Cadastrar Produto
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?= base_url('produto/cadastro') ?>">
+            <a class="nav-link" href="<?= base_url('produto') ?>">
               <span data-feather="shopping-cart"></span>
-              Cadastrar Produto
+              Produtos
             </a>
           </li>
         </ul>

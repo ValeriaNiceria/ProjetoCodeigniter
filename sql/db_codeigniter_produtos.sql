@@ -27,9 +27,12 @@ CREATE TABLE `produtos` (
   `nome` varchar(100) DEFAULT NULL,
   `descricao` text,
   `preco` double DEFAULT NULL,
-  `usuario_id` int(11) DEFAULT NULL,
+  `vendedor_id` int(11) DEFAULT NULL,
+  `vendido` tinyint(1) DEFAULT NULL,
+  `comprador_id` int(11) DEFAULT NULL,
+  `data` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +41,7 @@ CREATE TABLE `produtos` (
 
 LOCK TABLES `produtos` WRITE;
 /*!40000 ALTER TABLE `produtos` DISABLE KEYS */;
-INSERT INTO `produtos` VALUES (4,'Lápis','Caixa de lápis preto',1.99,14),(5,'Caneta vermelha','Caixa de caneta vermelha',12.5,14),(6,'Computador','Computador samsung',980.99,14),(7,'Lápis rosa','Lápis rosa',2.1,14),(8,'Caneta Preta','Caneta',4.9,14);
+INSERT INTO `produtos` VALUES (13,'Lápis','Lápis preto',0.99,15,0,NULL,'2018-03-07 21:22:44'),(14,'Computador','Computador Samsung',1250.95,15,0,NULL,'2018-03-07 21:23:17'),(15,'Caneta','Caneta vermelha ',2.99,15,0,NULL,'2018-03-07 21:23:35'),(16,'Caderno','Caderno capa dura',25.45,15,0,NULL,'2018-03-07 21:49:43'),(17,'Pendrive','Pendrive usado',18,15,0,NULL,'2018-03-07 22:15:11');
 /*!40000 ALTER TABLE `produtos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-03-07 17:19:18
+-- Dump completed on 2018-03-07 22:43:05

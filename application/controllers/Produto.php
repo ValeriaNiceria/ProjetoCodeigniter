@@ -53,6 +53,42 @@ class Produto extends CI_Controller {
 	}
 
 
+	public function meus_produtos()
+	{	
+		//verifica se o usuário está logado
+		$this->verificar_sessao();
+
+		$por_pagina = 4; //número de registros por página
+		$inicio = ($this->uri->segment(3)) ? $this->uri->segment(3) : ''; //Está pegando o segundo campo da url
+
+		$tabela = "produtos";
+		$id = $this->session->userdata('id');
+		$dados['produtos'] = $this->Produto_model->findMeusPagination($id, $tabela, $por_pagina, $inicio);
+
+
+		// ** Dados para paginação ** 
+		$this->load->library('pagination');
+		
+		$config['base_url'] = base_url() . 'meus_produtos/page/';
+		$config['per_page'] = $por_pagina; 
+		$config['total_rows'] = $this->Produto_model->num_rows($tabela);
+		$config['num_links'] = 5;
+		$config['first_url'] = '0';
+		$config['uri_segment'] = 3;
+		//** Inicializar a paginação **
+		$this->pagination->initialize($config);
+		//** Criar links da paginação ** 
+		$dados['paginacao_produtos'] = $this->pagination->create_links(); 
+
+
+		/*Carregando a páginas*/
+		$this->load->view('includes/html_header');
+		$this->load->view('includes/menu');
+		$this->load->view('lista_meus_produtos', $dados);
+		$this->load->view('includes/html_footer');
+	}
+
+
 	public function cadastro()
 	{
 		//verfica se o usuário está logado
@@ -70,27 +106,31 @@ class Produto extends CI_Controller {
 		//verificar se o usuário está logado
 		$this->verificar_sessao();
 
+		/*Pega dados dos campos e coloca em variáveis*/
 		$id_usuario = $this->session->userdata('id');
 		$nome = $this->input->post('nome');
 		$descricao = $this->input->post('descricao');
 		$preco = $this->input->post('preco');
+		$data = date('Y-m-d H:i:s');
 
 		$dados = array(
 			'nome' => $nome,
 			'descricao' => $descricao,
 			'preco' => $preco,
-			'usuario_id' => $id_usuario
+			'vendedor_id' => $id_usuario,
+			'vendido' => 0,
+			'data' => $data
 		);
 		$tabela = "produtos";
 
 		if ($this->Produto_model->cadastrar($tabela, $dados))
 		{
 			$this->session->set_flashdata('success', 'Produto cadastrado com sucesso.');
-			redirect('produto');
+			redirect('produto/meus_produtos');
 		} else
 		{
 			$this->session->set_flashdata('error', 'Não foi possível cadastrar o produto.');
-			redirect('produto');
+			redirect('produto/meus_produtos');
 		}
 	}
 
@@ -107,11 +147,11 @@ class Produto extends CI_Controller {
 		if ($this->Produto_model->excluir($id, $tabela))
 		{
 			$this->session->set_flashdata('success', 'Produto excluído com sucesso.');
-			redirect('produto');
+			redirect('produto/meus_produtos');
 		}else
 		{
 			$this->session->set_flashdata('error', 'Não foi possível excluir o produto.');
-			redirect('produto');
+			redirect('produto/meus_produtos');
 		}
 	}
 
@@ -149,11 +189,11 @@ class Produto extends CI_Controller {
 			if ($this->Produto_model->atualizar($id, $tabela, $dados))
 			{
 				$this->session->set_flashdata('success', 'Produto atualizado com sucesso.');
-				redirect('produto');
+				redirect('produto/meus_produtos');
 			} else
 			{
 				$this->session->set_flashdata('error', 'Não foi possível atualizar o produto');
-				redirect('produto');
+				redirect('produto/meus_produtos');
 			}
 		}
 	}
@@ -171,6 +211,24 @@ class Produto extends CI_Controller {
 		$this->load->view('includes/html_header');
 		$this->load->view('includes/menu');
 		$this->load->view('lista_produtos', $dados);
+		$this->load->view('includes/html_footer');	
+	}
+
+
+	public function meus_pesquisar()
+	{
+		//verifica se o usuário está logado
+		$this->verificar_sessao();
+
+		$pesquisa = $this->input->post('pesquisar');
+		$tabela = "produtos";
+		$id = $this->session->userdata('id');
+		$this->db->where('vendedor_id', $id); 
+		$dados['produtos'] = $this->Produto_model->pesquisar($pesquisa, $tabela);
+
+		$this->load->view('includes/html_header');
+		$this->load->view('includes/menu');
+		$this->load->view('lista_meus_produtos', $dados);
 		$this->load->view('includes/html_footer');	
 	}
 }
