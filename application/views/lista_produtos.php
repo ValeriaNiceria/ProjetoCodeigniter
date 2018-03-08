@@ -17,6 +17,14 @@
     </form>
   </div>
 
+    <!--Notifição-->
+  <?php
+    $error = $this->session->flashdata('error');
+    $success = $this->session->flashdata('success');
+    echo isset($error) ? "<div class='alert alert-danger'>" . $error . "</div>" : "";
+    echo isset($success) ? "<div class='alert alert-success'>" . $success . "</div>" : "";
+  ?>
+
   <!-- lista de produtos-->
   <?php if (empty($produtos)) : ?>
     <div class="alert alert-info">Nenhum registro encontrado.</div>
@@ -24,19 +32,19 @@
    <div class="row ml-2">
       <?php foreach ($produtos as $produto) : ?>
         <div class="modal-content col-md-5 mx-3 mt-3">
-      <div class="modal-header">
-        <h5 class="modal-title font-weight-bold"><?= $produto['nome']?></h5>
-      </div>
-      <div class="modal-body">
-        <p class="font-italic"><?= $produto['descricao']?></p>
-      </div>
-      <div class="modal-footer">
-        <div class="col-md-8">
-          <p class="font-weight-bold text-primary" style="font-size: 22px;">R$ <?= $produto['preco']?></p>
+          <div class="modal-header">
+            <h5 class="modal-title font-weight-bold"><?= $produto['produto_nome']?></h5>
+          </div>
+          <div class="modal-body">
+            <p class="font-italic"><?= $produto['descricao']?></p>
+          </div>
+          <div class="modal-footer">
+            <div class="col-md-8">
+              <p class="font-weight-bold text-primary" style="font-size: 22px;">R$ <?= $produto['preco']?></p>
+            </div>
+            <a href="<?= base_url('compra/'. $produto['id'])?>" onclick="return confirm('Você deseja realizar está compra?');" class="btn btn-success"><span data-feather="shopping-cart" class="mx-2"></span>Comprar</a>
+          </div>
         </div>
-        <button type="button" class="btn btn-success"><span data-feather="shopping-cart" class="mx-2"></span>Comprar</button>
-      </div>
-    </div>
       <?php endforeach; ?>
     </div>
   <?php endif; ?>  

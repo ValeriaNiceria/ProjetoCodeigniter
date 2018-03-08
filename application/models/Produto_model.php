@@ -25,6 +25,7 @@ class Produto_model extends MY_Model {
 
 	public function findPagination($tabela, $por_pagina, $inicio)
 	{
+		$this->db->where('vendido', 0);
 		$this->db->limit($por_pagina, $inicio);
 		$query = $this->db->get($tabela);
 		return $query->result_array();
@@ -41,6 +42,7 @@ class Produto_model extends MY_Model {
 
     public function get_ultimos()
     {	
+    	$this->db->where('vendido', 0);
     	$this->db->order_by('data', 'desc')->limit(2);
     	$query = $this->db->get("produtos");
     	if ($query->num_rows() > 0){
@@ -57,6 +59,44 @@ class Produto_model extends MY_Model {
 		$this->db->limit($por_pagina, $inicio);
 		$query = $this->db->get($tabela);
 		return $query->result_array();
+	}
+
+
+
+	public function produto_comprado($id){
+		if (isset($id))
+		{
+			$this->db->where('comprador_id', $id);
+			$this->db->where('vendido', 1);
+			$query = $this->db->get("produtos");
+			if ($query->num_rows() > 0)
+			{
+				return $query->result_array();
+			}else
+			{
+				return NULL;
+			}
+		}
+		return FALSE;
+	}
+
+
+
+	public function produto_vendido($id){
+		if (isset($id))
+		{
+			$this->db->where('vendedor_id', $id);
+			$this->db->where('vendido', 1);
+			$query = $this->db->get("produtos");
+			if ($query->num_rows() > 0)
+			{
+				return $query->result_array();
+			}else
+			{
+				return NULL;
+			}
+		}
+		return FALSE;
 	}
 
 }

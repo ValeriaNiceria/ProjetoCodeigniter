@@ -59,3 +59,6 @@ $route['page'] = 'produto';
 
 $route['meus_produtos/page/(:num)'] = 'produto/meus_produtos/$1';
 $route['meus_produtos/page/'] = 'produto/meus_produtos';
+
+
+$route['compra/(:num)'] = 'compra/index/$1';

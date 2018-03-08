@@ -27,7 +27,7 @@
             </div>
 
             <div class="row">
-                <div class="col-md-4">
+               <div class="col-md-4">
                     <label for="telefone">Telefone:</label>
                     <input type="text" name="telefone" id="telefone" value="<?= $usuario['telefone'] ?>" placeholder="Informe o telefone" class="form-control" required/> 
                 </div>
@@ -74,7 +74,7 @@
                     </select>
                 </div>
             </div>
-
+    
             <input type="hidden" name="id" value="<?= $usuario['id'] ?>"/>
 
 		    <div class="mt-3 float-right">

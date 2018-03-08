@@ -1,14 +1,6 @@
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
     <h1 class="h2">Perfil</h1>
-    <div class="row">
-      <div class="col-md-6">
-      <button class="btn btn-outline-info btn-block"><span data-feather="package" class="mr-2"></span>Produtos vendidos</button>
-    </div>
-    <div class="col-md-6">
-      <button class="btn btn-outline-info btn-block"><span data-feather="package" class="mr-2"></span>Produtos comprados</button>
-    </div>
-    </div>
   </div>
 
    <!--Notificacação-->
@@ -22,7 +14,7 @@
   <!-- Modal -->
   <div class="modal-content">
     <div class="modal-header bg-dark">
-      <h5 class="modal-title text-light" id="exampleModalLabel">Informações</h5>
+      <h5 class="modal-title text-light">Informações</h5>
     </div>
     <div class="modal-body">
       <div class="col-md-10">
@@ -49,9 +41,6 @@
         <span data-feather="mail"></span> <?= $usuario['email']?>
       </div>
 
-
-     
-  
     </div>
     <div class="modal-footer">
       <a href="<?= base_url('usuario/atualizar/'. $usuario['id']) ?>" class="btn btn-primary">
@@ -65,9 +54,74 @@
       </a>
     </div>
   </div>
-      
 
-        
+
+  <!-- Produtos Comprados -->
+  <div class="modal-content mt-3">
+    <div class="modal-header bg-dark">
+      <h5 class="modal-title text-light">Produtos Comprados</h5>
+    </div>
+    <div class="modal-body">
+      <?php if (empty($produtos_comprados)) : ?>
+        <div class="alert alert-info">Nenhum registro encontrado.</div>
+          <?php else : ?>
+            <table class="table">
+              <thead >
+                <tr>
+                  <th>ID</th>
+                  <th>Nome</th>
+                  <th>Descrição</th>
+                  <th>Preço</th>
+                </tr>
+              </thead>
+              <?php foreach ($produtos_comprados as $produto) : ?>
+                <tbody>
+                  <tr>
+                    <td><?= $produto['id'] ?></td>
+                    <td><?= $produto['produto_nome'] ?></td>
+                    <td><?= $produto['descricao'] ?></td>
+                    <td><?= $produto['preco'] ?></td>
+                  </tr>
+                </tbody>
+              <?php endforeach; ?>
+            </table>
+      <?php endif; ?>  
+    </div>
+  </div>
+
+    <!-- Produtos Vendidos -->
+  <div class="modal-content mt-3">
+    <div class="modal-header bg-dark">
+      <h5 class="modal-title text-light">Produtos Vendidos</h5>
+    </div>
+    <div class="modal-body">
+      <?php if (empty($produtos_vendidos)) : ?>
+        <div class="alert alert-info">Nenhum registro encontrado.</div>
+          <?php else : ?>
+            <table class="table">
+              <thead >
+                <tr>
+                  <th>ID</th>
+                  <th>Nome</th>
+                  <th>Descrição</th>
+                  <th>Preço</th>
+                </tr>
+              </thead>
+              <?php foreach ($produtos_vendidos as $produto) : ?>
+                <tbody>
+                  <tr>
+                    <td><?= $produto['id'] ?></td>
+                    <td><?= $produto['produto_nome'] ?></td>
+                    <td><?= $produto['descricao'] ?></td>
+                    <td><?= $produto['preco'] ?></td>
+                  </tr>
+                </tbody>
+              <?php endforeach; ?>
+            </table>
+      <?php endif; ?>  
+    </div>
+  </div>
+
   </div>
 </main>
 </div>

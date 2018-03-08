@@ -178,6 +178,9 @@ class Usuario extends CI_Controller {
 		$tabela = "estados";
 		$dados['estado'] = $this->Usuario_model->getById($estado_id, $tabela);
 
+		$this->load->model('Produto_model');
+		$dados['produtos_comprados'] = $this->Produto_model->produto_comprado($id);
+		$dados['produtos_vendidos'] = $this->Produto_model->produto_vendido($id);
 
 		$this->load->view('includes/html_header');
 		$this->load->view('includes/menu');

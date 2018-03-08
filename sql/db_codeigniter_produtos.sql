@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS `produtos`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `produtos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(100) DEFAULT NULL,
+  `produto_nome` varchar(100) DEFAULT NULL,
   `descricao` text,
   `preco` double DEFAULT NULL,
   `vendedor_id` int(11) DEFAULT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE `produtos` (
   `comprador_id` int(11) DEFAULT NULL,
   `data` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `produtos` (
 
 LOCK TABLES `produtos` WRITE;
 /*!40000 ALTER TABLE `produtos` DISABLE KEYS */;
-INSERT INTO `produtos` VALUES (13,'Lápis','Lápis preto',0.99,15,0,NULL,'2018-03-07 21:22:44'),(14,'Computador','Computador Samsung',1250.95,15,0,NULL,'2018-03-07 21:23:17'),(15,'Caneta','Caneta vermelha ',2.99,15,0,NULL,'2018-03-07 21:23:35'),(16,'Caderno','Caderno capa dura',25.45,15,0,NULL,'2018-03-07 21:49:43'),(17,'Pendrive','Pendrive usado',18,15,0,NULL,'2018-03-07 22:15:11');
+INSERT INTO `produtos` VALUES (13,'Lápis','Lápis preto',0.99,15,0,NULL,'2018-03-07 21:22:44'),(14,'Computador','Computador Samsung',1250.95,15,0,NULL,'2018-03-07 21:23:17'),(15,'Caneta','Caneta vermelha ',2.99,15,0,NULL,'2018-03-07 21:23:35'),(16,'Caderno','Caderno capa dura',25.45,15,0,NULL,'2018-03-07 21:49:43'),(17,'Pendrive','Pendrive usado',18,15,0,NULL,'2018-03-07 22:15:11'),(18,'Lapiseira','Lapiseira 0.7',12.3,16,0,NULL,'2018-03-08 15:25:50');
 /*!40000 ALTER TABLE `produtos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-03-07 22:43:05
+-- Dump completed on 2018-03-08 16:26:06

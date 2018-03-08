@@ -6,7 +6,7 @@
   <div class="col-md-12">
     <form action="<?= base_url('produto/atualizar') ?>" method="post" class="form">
       <label for="nome">Nome:</label>
-      <input type="text" name="nome" id="nome" value="<?= $produto['nome'] ?>" class="form-control" autofocus required/>
+      <input type="text" name="nome" id="nome" value="<?= $produto['produto_nome'] ?>" class="form-control" autofocus required/>
 
       <label for="descricao">Descrição</label>
       <textarea name="descricao" id="descricao" class="form-control"><?= $produto['descricao'] ?></textarea>

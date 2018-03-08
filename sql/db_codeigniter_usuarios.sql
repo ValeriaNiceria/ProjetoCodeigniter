@@ -33,7 +33,7 @@ CREATE TABLE `usuarios` (
   `status` int(11) DEFAULT NULL,
   `nivel` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (15,'Maria Santos','(31)3333-3333','123.123.123-23',25,'maria@gmail.com','827ccb0eea8a706c4c34a16891f84e7b',1,1);
+INSERT INTO `usuarios` VALUES (15,'Maria Santos','(31)3333-3333','123.123.123-23',25,'maria@gmail.com','827ccb0eea8a706c4c34a16891f84e7b',1,1),(16,'Valéria','(31)8990-1111','120.909.890-09',5,'valeria@gmail.com','827ccb0eea8a706c4c34a16891f84e7b',1,1);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-03-07 22:43:05
+-- Dump completed on 2018-03-08 16:26:06

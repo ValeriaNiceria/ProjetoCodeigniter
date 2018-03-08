@@ -114,7 +114,7 @@ class Produto extends CI_Controller {
 		$data = date('Y-m-d H:i:s');
 
 		$dados = array(
-			'nome' => $nome,
+			'produto_nome' => $nome,
 			'descricao' => $descricao,
 			'preco' => $preco,
 			'vendedor_id' => $id_usuario,
@@ -181,7 +181,7 @@ class Produto extends CI_Controller {
 			$tabela = "produtos";
 
 			$dados = array(
-				'nome' => $nome,
+				'produto_nome' => $nome,
 				'descricao' => $descricao,
 				'preco' => $preco
 			);

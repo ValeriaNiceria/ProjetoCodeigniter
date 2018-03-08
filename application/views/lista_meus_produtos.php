@@ -47,7 +47,7 @@
         <tbody>
           <tr>
             <td><?= $produto['id'] ?></td>
-            <td><?= $produto['nome'] ?></td>
+            <td><?= $produto['produto_nome'] ?></td>
             <td><?= $produto['descricao'] ?></td>
             <td><?= $produto['preco'] ?></td>
             <td><?= ($produto['vendido']) ? 'Vendido' : 'Disponível' ?></td>
