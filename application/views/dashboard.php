@@ -21,7 +21,10 @@
   </div>
     <!--lista dos últimos produtos cadastrados-->
     <div class="row">
-      <?php foreach ($produtos as $produto) : ?>
+      <?php if (empty($produtos)) :?>
+        <p class='alert alert-info'>Nenhum registro encontrado</p>
+      <?php else: ?>
+        <?php foreach ($produtos as $produto) : ?>
         <div class="modal-content col-md-5 mx-3 mt-3">
           <div class="modal-header">
             <h5 class="modal-title font-weight-bold"><?= $produto['produto_nome']?></h5>
@@ -37,6 +40,7 @@
           </div>
         </div>
       <?php endforeach; ?>
+      <?php endif;?>
     </div>
     
   </div>
